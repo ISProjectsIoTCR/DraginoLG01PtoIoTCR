@@ -16,8 +16,8 @@ float frequency = 915.0;
 
 
 //_______________________________CONEXIONES_____________________________________
-String dId = "did_IoTCR";
-String server = "server_IoTCR";
+String dId = "dId_device";
+String server = "broker";
 String mqttuser = "";
 String mqttpass = "";
 
@@ -63,10 +63,11 @@ void loop()
       int i = 0;
       int index = 0;
       //NUMBER_OF_ITEMS_OF_DATA could be constant or another variable
+      Process p;
       for (i = 0; i < 3; i++)
       {
         Console.println(buf[i]);
-        Process p;
+
         p.begin("mosquitto_pub");
         p.addParameter("-h");
         p.addParameter(server);
@@ -86,8 +87,8 @@ void loop()
         index += sprintf(&string_data[index], "%d,", buf[i]);
         delay(1000);
       }
-      Process p;
-      p.begin("mosquitto_pub");
+
+      p(A.begin("mosquitto_pub");
       p.addParameter("-h");
       p.addParameter(server);
       p.addParameter("-p");
